@@ -73,13 +73,13 @@
                     </tr>                                        
                     <tr>
                         <td colspan="3" class="text-right">Total</td>
-                        <td>$20 </td>
+                        <td>$20</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="btn-order">
-            <button>Order Now</button>
+            <a href="#"><button>Order Now</button></a>
         </div>
         <!-- Bootstrap JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

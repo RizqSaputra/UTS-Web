@@ -58,14 +58,18 @@
                   <div class="form-left h-100 py-5 px-5">
                     <h1>Buying Form</h1>
                     <br>
-                    <form method="POST" action="" class="row g-4">
+                    <form class="row g-4">
                       <div class="col-12">
                         <label for="name">Name<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter name" required>
+                        <input type="text" class="form-control" id="nama" placeholder="Enter name" required>
                       </div>                              
                       <div class="col-12">
                         <label for="phone">Phone number<span class="text-danger">*</span></label>
                         <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" required>
+                      </div>
+                      <div class="col-12">
+                        <label for="phone">Email<span class="text-danger">*</span></label>
+                        <input type="tel" class="form-control" id="email" placeholder="Enter email" required>
                       </div>
                       <div class="col-12">
                         <label for="product">Product<span class="text-danger">*</span></label>
@@ -80,7 +84,8 @@
                         <label for="address">Address<span class="text-danger">*</span></label>
                         <textarea class="form-control" id="address" rows="2" placeholder="Enter address" required></textarea>
                       </div>
-                      <button type="submit" class="btn btn-primary px-2">Send</button>
+                      <input type="hidden" value="pending" id="status">
+                      <button type="submit" class="btn btn-primary px-2" onclick="tambahData()">Send</button>
                     </form>
                   </div>
               </div>
@@ -95,6 +100,135 @@
   </div>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>AOS.init();</script>
+
+  <script>
+		// Mendapatkan referensi ke elemen form
+const form = document.querySelector('form');
+
+// Mendapatkan referensi ke elemen tabel
+const tabel = document.querySelector('#tabel');
+
+// Mendapatkan data dari localStorage (jika tersedia) atau menginisialisasi data kosong
+let data = JSON.parse(localStorage.getItem('data')) || [];
+
+// Fungsi untuk menampilkan data ke dalam tabel
+function tampilkanData() {
+  // Menghapus semua baris di tabel kecuali header
+  while (tabel.rows.length > 1) {
+    tabel.deleteRow(1);
+  }
+
+  // Menambahkan setiap data ke dalam tabel
+  for (let i = 0; i < data.length; i++) {
+    const row = tabel.insertRow();
+
+    const namaCell = row.insertCell();
+    namaCell.textContent = data[i].nama;
+
+    const lokasiCell = row.insertCell();
+    lokasiCell.textContent = data[i].phone;
+
+    const penyelenggaraCell = row.insertCell();
+    penyelenggaraCell.textContent = data[i].email;
+
+    const deskripsiCell = row.insertCell();
+    deskripsiCell.textContent = data[i].product;
+
+    const jenisCell = row.insertCell();
+    jenisCell.textContent = data[i].address;
+
+    let statusCell = row.insertCell();
+    statusCell.textContent = data[i].status;
+
+   
+  }
+}
+
+// Fungsi untuk menambahkan data ke dalam tabel dan localStorage
+function tambahData() {
+  const nama = form.elements.nama.value;
+  const phone = form.elements.phone.value;
+  const email = form.elements.email.value;
+  const product = form.elements.product.value;
+  const address = form.elements.address.value;
+  let status = form.elements.status.value;
+
+
+  // Mengecek apakah data yang ingin ditambahkan sudah ada di dalam array `data`
+  const isDuplicate = data.some((item) => {
+    return item.nama === nama && item.phone === phone && item.email === email && item.product === product && item.address === address && item.status === status;
+  });
+
+  // Jika data sudah ada, tampilkan pesan kesalahan dan keluar dari fungsi
+  if (isDuplicate) {
+  
+    return;
+  }
+
+  const newData = {
+    nama: nama,
+    phone: phone,
+    email: email,
+    product: product,
+    address: address,
+    status: status
+
+  };
+
+  data.push(newData);
+  sessionStorage.setItem('data', JSON.stringify(data));
+  tampilkanData();
+}
+
+
+// Fungsi untuk mengedit data di dalam tabel dan localStorage
+// function editData(index) {
+//   const newData = {
+//     nama: prompt('Masukkan nama kegiatan:', data[index].nama),
+//     lokasi: prompt('Masukkan lokasi kegiatan:', data[index].lokasi),
+//     penyelenggara: prompt('Masukkan penyelenggara:', data[index].penyelenggara),
+//     deskripsi: prompt('Masukkan deskripsi kegiatan:', data[index].deskripsi),
+//     jenis: prompt('Masukkan jenis kegiatan (wajib/opsional):', data[index].jenis)
+//   };
+
+//   data[index] = newData;
+//   localStorage.setItem('data', JSON.stringify(data));
+//   tampilkanData();
+// }
+
+// Fungsi untuk menghapus data dari tabel dan localStorage
+// function hapusData(index) {
+//   data.splice(index, 1);
+//   localStorage.setItem('data', JSON.stringify(data));
+//   tampilkanData();
+// }
+
+// Menampilkan data pertama kali
+tampilkanData();
+
+// Event listener untuk form submit
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const nama = form.elements.nama.value;
+  const phone = form.elements.phone.value;
+  const email = form.elements.email.value;
+const product = form.elements.product.value;
+const address = form.elements.address.value;
+let status = form.elements.status.value;
+
+// Memanggil fungsi tambahData dengan parameter yang sesuai
+tambahData(nama, phone, email, product, address, status);
+
+// Mereset nilai input pada form
+form.reset();
+});
+
+
+
+
+
+		</script>
   <!-- <script src="js/main.js"></script> -->
 </body>
 </html>

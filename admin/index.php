@@ -14,7 +14,7 @@ if (isset($_GET['logout'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <title>Modern Admin Dashboard</title>
+    <title>Admin</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"> -->
@@ -24,7 +24,7 @@ if (isset($_GET['logout'])) {
    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
-            <h3>M<span>odern</span></h3>
+            <h3>Admin</h3>
         </div>
         
         <div class="side-content">
@@ -42,9 +42,9 @@ if (isset($_GET['logout'])) {
                         </a>
                     </li>
                     <li>
-                       <a href="designer.php">
+                       <a href="employee.php">
                             <span class="las la-user-alt"></span>
-                            <small>Designer</small>
+                            <small>Employee</small>
                         </a>
                     </li>                    
                     <li>
@@ -123,7 +123,7 @@ if (isset($_GET['logout'])) {
 
                     <div class="card">
                         <div class="card-head">
-                            <h2>$653,200</h2>
+                            <h2>$ <span id="jumlah"></span></h2>
                             <span class="las la-shopping-cart"></span>
                         </div>
                         <div class="card-progress">
@@ -153,31 +153,124 @@ if (isset($_GET['logout'])) {
                 <section class="math">
                     <form method="POST" action=""> 
                         <h2>Form</h2>                   
-                        <label>Value</label>
+                        <label>Product</label>
                         <div class="input-group">                            
-                        <input type="number" class="form-control" id="harga-satuan" name="nama" placeholder="Enter Value" autocomplete="off" required>
-                        </div>                                
-                        <label>Value</label>
+                        <input type="text" class="form-control"  name="product" placeholder="Enter product" autocomplete="off" required>
+                        </div>    
+
+                        <label>Price</label>
                         <div class="input-group">                            
-                        <input type="number" class="form-control" id="harga-satuan" name="nama" placeholder="Enter Value" autocomplete="off" required>
+                        <input type="number" class="form-control"  name="price" placeholder="Enter Value" autocomplete="off" required>
                         </div>                                
-                        <label>Package</label>
-                        <select class="form-select" aria-label="Default select example" name="role">
-                            <option value="basic">Basic</option>
-                            <option value="advanced">Advanced</option>
-                            <option value="premium">Premium</option>
-                        </select>
 
                         <div class="">
                             <button type="submit" class="btn btn-primary px-4 float-end" name="submit" Value="submit">Submit</button>
                         </div>
                     </form>
             </section>
+            <div>
+            <table width="100%" id="tabel">
+                            <thead>
+                                <tr>    
+                                    <th>#ID</th>
+                                    <th><span class="las la-sort"></span> PRODUCT</th>
+                                    <th><span class="las la-sort"></span> Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>                                                                                                                    
+                            </tbody>
+                        </table>
             </div>
-            
+            </div>                        
         </main>
         
     </div>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+    <script>
+		// Mendapatkan referensi ke elemen form
+const form = document.querySelector('form');
+
+// Mendapatkan referensi ke elemen tabel
+const tabel = document.querySelector('#tabel');
+
+// Mendapatkan data dari sessionStorage (jika tersedia) atau menginisialisasi data kosong
+let data = JSON.parse(sessionStorage.getItem('harga')) || [];
+
+// Fungsi untuk menampilkan data ke dalam tabel
+function tampilkanData() {
+  // Menghapus semua baris di tabel kecuali header
+  while (tabel.rows.length > 1) {
+    tabel.deleteRow(1);
+  }
+
+  // Menambahkan setiap data ke dalam tabel
+  for (let i = 0; i < data.length; i++) {
+    const row = tabel.insertRow();
+
+    const numberCell = row.insertCell();
+    numberCell.textContent = i + 1;
+
+    const productCell = row.insertCell();
+    productCell.textContent = data[i].product;
+
+    const priceCell = row.insertCell();
+    priceCell.textContent = data[i].price;
+          
+  }
+}
+
+// tampilkan data untuk pertama kali
+tampilkanData();
+
+// Fungsi untuk menambahkan data ke dalam tabel dan sessionStorage
+function tambahData() {
+    const product = form.elements.product.value;
+    const price = form.elements.price.value;
+
+
+    // Mengecek apakah data yang ingin ditambahkan sudah ada di dalam array `data`
+    const isDuplicate = data.some((item) => {
+        return item.product === product && item.price === price;
+    });
+
+    // Jika data sudah ada, tampilkan pesan kesalahan dan keluar dari fungsi
+    if (isDuplicate) {
+    
+        return;
+    }
+
+    const newData = {
+        product: product,
+        price: price
+    };
+
+    data.push(newData);
+    sessionStorage.setItem('harga', JSON.stringify(data));
+    tampilkanData();
+}
+
+
+
+// Event listener untuk form submit
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const product = form.elements.product.value;
+  const price = form.elements.price.value;
+  
+
+// Memanggil fungsi tambahData dengan parameter yang sesuai
+tambahData(product,price);
+// tampilkanData();
+// Mereset nilai input pada form
+form.reset();
+});
+
+const jumlah = document.getElementById('jumlah');
+const jumlahHarga = data.reduce((total, curr) => total + parseInt(curr.price), 0);
+jumlah.textContent = jumlahHarga;
+sessionStorage.setItem("jumlah", jumlahHarga);
+</script>
+<script src="js/main.js"></script>
+
 </body>
 </html>

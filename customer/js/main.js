@@ -1,5 +1,5 @@
 let navbarlinks = document.querySelectorAll('#navbar a');
-  
+
 function navbarlinksActive() {
   navbarlinks.forEach(navbarlink => {
 

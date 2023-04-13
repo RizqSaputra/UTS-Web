@@ -1,15 +1,3 @@
-<?php
-session_start();
-
-if (isset($_GET['logout'])) {
-  session_destroy();
-  header('Location: ../index.php');
-  exit();
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,30 +11,35 @@ if (isset($_GET['logout'])) {
    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
-            <h3>Employee</h3>
+            <h3>Admin</h3>
         </div>
         
         <div class="side-content">
             <div class="profile">
-                <div class="profile-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                <h4>Rizq</h4>
+                <div class="profile-img bg-img" style="background-image: url(img/3.jpeg)"></div>
+                <h4>Admin</h4>
             </div>
 
             <div class="side-menu">
                 <ul>
                     <li>
-                       <a href="" class="active">
+                       <a href="index.php" >
                             <span class="las la-home"></span>
                             <small>Dashboard</small>
                         </a>
+                    </li>
+                    <li>
+                       <a href="" class="active">
+                            <span class="las la-user-alt"></span>
+                            <small>Employee</small>
+                        </a>
                     </li>                    
                     <li>
-                       <a href="project.php">
+                       <a href="projects.php">
                             <span class="las la-clipboard-list"></span>
                             <small>Projects</small>
                         </a>
-                    </li>
-                    
+                    </li>                    
 
                 </ul>
             </div>
@@ -64,11 +57,11 @@ if (isset($_GET['logout'])) {
                 <div class="header-menu">
                     <label for="">
                         <span class="las la-search"></span>
-                    </label>                                        
+                    </label>                    
                     
                     <div class="user">
                         <div class="bg-img" style="background-image: url(img/1.jpeg)"></div>
-                        <a href="?logout=true">
+                        <a href="../index.php">
                             <span class="las la-power-off"></span>
                             <span>Logout</span>
                         </a>
@@ -117,7 +110,7 @@ if (isset($_GET['logout'])) {
 
                     <div class="card">
                         <div class="card-head">
-                        <h2>$ <span id="jumlah"></span></h2>                            
+                        <h2>$ <span id="jumlah"></span></h2>
                             <span class="las la-shopping-cart"></span>
                         </div>
                         <div class="card-progress">
@@ -140,14 +133,76 @@ if (isset($_GET['logout'])) {
                             </div>
                         </div>
                     </div>
-                    <H1>Welcome Rizq</H1>
+
+                </div>
+
+
+                <div class="records table-responsive">
+
+                    <div class="record-header">
+                        <div class="add">
+                            <span>Entries</span>
+                            <select name="" id="">
+                                <option value="">ID</option>
+                            </select>                            
+                        </div>
+
+                        <div class="browse">
+                           <input type="search" placeholder="Search" class="record-search">
+                            <select name="" id="">
+                                <option value="">Status</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <th>#ID</th>
+                                    <th><span class="las la-sort"></span> DESIGNER</th>
+                                    <th><span class="las la-sort"></span> PHONE NUMBER</th>
+                                    <th><span class="las la-sort"></span> ADDRESS</th>
+                                    <th><span class="las la-sort"></span> PROJECT</th>
+                                    <th><span class="las la-sort"></span> STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#1</td>
+                                    <td>
+                                        <div class="client">
+                                           <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
+                                            <div class="client-info">
+                                                <h4>Rizq</h4>
+                                                <small>Rizq@gmail.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        082345678910
+                                    </td>
+                                    <td>
+                                        Jl Ki Wahid Hasyim 2
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        Officer
+                                    </td>
+                                </tr>                                                              
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             
             </div>
             
         </main>
-        
+        <script src="js/main.js"></script>
     </div>
-    <script src="js/main.js"></script>
 </body>
 </html>

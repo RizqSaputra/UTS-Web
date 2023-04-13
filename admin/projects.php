@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <title>Modern Admin Dashboard</title>
+    <title>Product</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
@@ -11,7 +11,7 @@
    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
-            <h3>M<span>odern</span></h3>
+            <h3>Admin</h3>
         </div>
         
         <div class="side-content">
@@ -29,9 +29,9 @@
                         </a>
                     </li>
                     <li>
-                       <a href="designer.php">
+                       <a href="employee.php">
                             <span class="las la-user-alt"></span>
-                            <small>Designer</small>
+                            <small>Employee</small>
                         </a>
                     </li>                    
                     <li>
@@ -110,7 +110,7 @@
 
                     <div class="card">
                         <div class="card-head">
-                            <h2>$653,200</h2>
+                        <h2>$ <span id="jumlah"></span></h2>                            
                             <span class="las la-shopping-cart"></span>
                         </div>
                         <div class="card-progress">
@@ -144,8 +144,7 @@
                             <span>Entries</span>
                             <select name="" id="">
                                 <option value="">ID</option>
-                            </select>
-                            <button>Add record</button>
+                            </select>                        
                         </div>
 
                         <div class="browse">
@@ -157,7 +156,7 @@
                     </div>
 
                     <div>
-                        <table width="100%">
+                        <table width="100%" id="tabel">
                             <thead>
                                 <tr>    
                                     <th>#ID</th>
@@ -169,259 +168,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#5033</td>
+                                <!-- <tr>
+                                    <td><span id="id"></span></td>
                                     <td>
                                         <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
                                             <div class="client-info">
-                                                <h4>Andrew Bruno</h4>
-                                                <small>bruno@crossover.org</small>
+                                                <h4><span id="name"></span></h4>
+                                                <small<span id="email"></span></small>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        $3171
+                                        <span id="product"></span>
                                     </td>
                                     <td>
-                                        19 April, 2022
+                                        <span id="address"></span>
                                     </td>
                                     <td>
-                                        -$205
+                                        <span id="number"></span>
                                     </td>
                                     <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
+                                        <span id="status"></span>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Exty Bruno</h4>
-                                                <small>exty@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $3171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        -$205
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Exty Bruno</h4>
-                                                <small>exty@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        <span class="paid">Paid</span>
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Andrew Bruno</h4>
-                                                <small>bruno@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $3171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        -$205
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Exty Bruno</h4>
-                                                <small>exty@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $3171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        <span class="paid">Paid</span>
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Exty Bruno</h4>
-                                                <small>exty@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        <span class="paid">Paid</span>
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Andrew Bruno</h4>
-                                                <small>bruno@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $3171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        -$205
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Exty Bruno</h4>
-                                                <small>exty@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $3171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        -$205
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#5033</td>
-                                    <td>
-                                        <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url(img/1.jpeg)"></div>
-                                            <div class="client-info">
-                                                <h4>Exty Bruno</h4>
-                                                <small>exty@crossover.org</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $2171
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        <span class="paid">Paid</span>
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span class="lab la-telegram-plane"></span>
-                                            <span class="las la-eye"></span>
-                                            <span class="las la-ellipsis-v"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                
+                                </tr>                                                                                                                                -->
                             </tbody>
                         </table>
                     </div>
@@ -433,5 +202,134 @@
         </main>
         
     </div>
+    <!-- <script src="js/main.js"></script> -->
+    <script>
+		// Mendapatkan referensi ke elemen form
+const form = document.querySelector('form');
+
+// Mendapatkan referensi ke elemen tabel
+const tabel = document.querySelector('#tabel');
+
+// Mendapatkan data dari sessionStorage (jika tersedia) atau menginisialisasi data kosong
+let data = JSON.parse(sessionStorage.getItem('data')) || [];
+
+// Fungsi untuk menampilkan data ke dalam tabel
+function tampilkanData() {
+  // Menghapus semua baris di tabel kecuali header
+  while (tabel.rows.length > 1) {
+    tabel.deleteRow(1);
+  }
+
+  // Menambahkan setiap data ke dalam tabel
+  for (let i = 0; i < data.length; i++) {
+    const row = tabel.insertRow();
+
+    const namaCell = row.insertCell();
+    namaCell.textContent = data[i].nama;
+
+    const lokasiCell = row.insertCell();
+    lokasiCell.textContent = data[i].phone;
+
+    const penyelenggaraCell = row.insertCell();
+    penyelenggaraCell.textContent = data[i].email;
+
+    const deskripsiCell = row.insertCell();
+    deskripsiCell.textContent = data[i].product;
+
+    const jenisCell = row.insertCell();
+    jenisCell.textContent = data[i].address;
+
+    let statusCell = row.insertCell();
+    statusCell.textContent = data[i].status;           
+  
+  }
+}
+
+// Fungsi untuk menambahkan data ke dalam tabel dan sessionStorage
+function tambahData() {
+  const nama = form.elements.nama.value;
+  const phone = form.elements.phone.value;
+  const email = form.elements.email.value;
+  const product = form.elements.product.value;
+  const address = form.elements.address.value;
+  let status = form.elements.status.value;
+
+
+  // Mengecek apakah data yang ingin ditambahkan sudah ada di dalam array `data`
+  const isDuplicate = data.some((item) => {
+    return item.nama === nama && item.phone === phone && item.email === email && item.product === product && item.address === address && item.status === status;
+  });
+
+  // Jika data sudah ada, tampilkan pesan kesalahan dan keluar dari fungsi
+  if (isDuplicate) {
+  
+    return;
+  }
+
+  const newData = {
+    nama: nama,
+    phone: phone,
+    email: email,
+    product: product,
+    address: address,
+    status: status
+
+  };
+
+  data.push(newData);
+  sessionStorage.setItem('data', JSON.stringify(data));
+  tampilkanData();
+}
+
+
+// Fungsi untuk mengedit data di dalam tabel dan sessionStorage
+// function editData(index) {
+//   const newData = {
+//     nama: prompt('Masukkan nama kegiatan:', data[index].nama),
+//     lokasi: prompt('Masukkan lokasi kegiatan:', data[index].lokasi),
+//     penyelenggara: prompt('Masukkan penyelenggara:', data[index].penyelenggara),
+//     deskripsi: prompt('Masukkan deskripsi kegiatan:', data[index].deskripsi),
+//     jenis: prompt('Masukkan jenis kegiatan (wajib/opsional):', data[index].jenis)
+//   };
+
+//   data[index] = newData;
+//   sessionStorage.setItem('data', JSON.stringify(data));
+//   tampilkanData();
+// }
+
+// Fungsi untuk menghapus data dari tabel dan sessionStorage
+function hapusData(index) {
+  data.splice(index, 1);
+  sessionStorage.setItem('data', JSON.stringify(data));
+  tampilkanData();
+}
+
+// Menampilkan data pertama kali
+tampilkanData();
+
+// Event listener untuk form submit
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const nama = form.elements.nama.value;
+  const phone = form.elements.phone.value;
+  const email = form.elements.email.value;
+const product = form.elements.product.value;
+const address = form.elements.address.value;
+let status = form.elements.status.value;
+
+// Memanggil fungsi tambahData dengan parameter yang sesuai
+tambahData(nama, phone, email, product, address, status);
+
+// Mereset nilai input pada form
+form.reset();
+});
+
+
+
+
+
+		</script>
+        <script src="js/main.js"></script>
 </body>
 </html>
