@@ -74,8 +74,8 @@
         <main>
             
             <div class="page-header">
-                <h1>Dashboard</h1>
-                <small>Home / Dashboard</small>
+                <h1>Employee</h1>
+                <small>Home / Employee</small>
             </div>
             
             <div class="page-content">

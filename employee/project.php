@@ -70,8 +70,8 @@
         <main>
             
             <div class="page-header">
-                <h1>Dashboard</h1>
-                <small>Home / Dashboard</small>
+                <h1>Project</h1>
+                <small>Home / Project</small>
             </div>
             
             <div class="page-content">
@@ -155,11 +155,11 @@
                         <table width="100%" id="tabel">
                             <thead>
                                 <tr>    
-                                    <th>#ID</th>
-                                    <th><span class="las la-sort"></span> CLIENT</th>
+                                    <th>Name</th>
+                                    <th><span class="las la-sort"></span> NUMBER</th>
+                                    <th><span class="las la-sort"></span> EMAIL</th>
                                     <th><span class="las la-sort"></span> PRODUCT</th>
                                     <th><span class="las la-sort"></span> ADDRESS</th>
-                                    <th><span class="las la-sort"></span> NUMBER</th>
                                     <th><span class="las la-sort"></span> STATUS</th>
                                     <th><span class="las la-sort"></span> ACTION</th>
                                 </tr>                                
@@ -200,17 +200,17 @@ function tampilkanData() {
     const namaCell = row.insertCell();
     namaCell.textContent = data[i].nama;
 
-    const lokasiCell = row.insertCell();
-    lokasiCell.textContent = data[i].phone;
+    const phoneCell = row.insertCell();
+    phoneCell.textContent = data[i].phone;
 
-    const penyelenggaraCell = row.insertCell();
-    penyelenggaraCell.textContent = data[i].email;
+    const emailCell = row.insertCell();
+    emailCell.textContent = data[i].email;
 
-    const deskripsiCell = row.insertCell();
-    deskripsiCell.textContent = data[i].product;
+    const productCell = row.insertCell();
+    productCell.textContent = data[i].product;
 
-    const jenisCell = row.insertCell();
-    jenisCell.textContent = data[i].address;
+    const addressCell = row.insertCell();
+    addressCell.textContent = data[i].address;
 
     let statusCell = row.insertCell();
     statusCell.textContent = data[i].status;
@@ -287,28 +287,6 @@ function hapusData(index) {
 
 // Menampilkan data pertama kali
 tampilkanData();
-
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const nama = form.elements.nama.value;
-  const phone = form.elements.phone.value;
-  const email = form.elements.email.value;
-const product = form.elements.product.value;
-const address = form.elements.address.value;
-let status = form.elements.status.value;
-
-// Memanggil fungsi tambahData dengan parameter yang sesuai
-tambahData(nama, phone, email, product, address, status);
-
-// Mereset nilai input pada form
-form.reset();
-});
-
-
-
-
-
 		</script>
     <script src="js/main.js"></script>
 </body>

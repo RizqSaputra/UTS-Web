@@ -152,7 +152,7 @@ if (isset($_GET['logout'])) {
                 </div>
                 <section class="math">
                     <form method="POST" action=""> 
-                        <h2>Form</h2>                   
+                        <h2>Form Add Product</h2>                   
                         <label>Product</label>
                         <div class="input-group">                            
                         <input type="text" class="form-control"  name="product" placeholder="Enter product" autocomplete="off" required>
@@ -265,6 +265,7 @@ tambahData(product,price);
 form.reset();
 });
 
+// menghitung element jumlah
 const jumlah = document.getElementById('jumlah');
 const jumlahHarga = data.reduce((total, curr) => total + parseInt(curr.price), 0);
 jumlah.textContent = jumlahHarga;

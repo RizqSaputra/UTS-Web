@@ -74,8 +74,8 @@
         <main>
             
             <div class="page-header">
-                <h1>Dashboard</h1>
-                <small>Home / Dashboard</small>
+                <h1>Projects</h1>
+                <small>Home / Projects</small>
             </div>
             
             <div class="page-content">
@@ -159,38 +159,16 @@
                         <table width="100%" id="tabel">
                             <thead>
                                 <tr>    
-                                    <th>#ID</th>
-                                    <th><span class="las la-sort"></span> CLIENT</th>
-                                    <th><span class="las la-sort"></span> PRODUCT</th>
-                                    <th><span class="las la-sort"></span> ADDRESS</th>
-                                    <th><span class="las la-sort"></span> NUMBER</th>
-                                    <th><span class="las la-sort"></span> STATUS</th>
+                                <th>Name</th>
+                                    <th><span></span> NUMBER</th>
+                                    <th><span></span> EMAIL</th>
+                                    <th><span></span> PRODUCT</th>
+                                    <th><span></span> ADDRESS</th>
+                                    <th><span></span> STATUS</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <tr>
-                                    <td><span id="id"></span></td>
-                                    <td>
-                                        <div class="client">
-                                            <div class="client-info">
-                                                <h4><span id="name"></span></h4>
-                                                <small<span id="email"></span></small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span id="product"></span>
-                                    </td>
-                                    <td>
-                                        <span id="address"></span>
-                                    </td>
-                                    <td>
-                                        <span id="number"></span>
-                                    </td>
-                                    <td>
-                                        <span id="status"></span>
-                                    </td>
-                                </tr>                                                                                                                                -->
+                                                                                                                                                        
                             </tbody>
                         </table>
                     </div>
@@ -204,7 +182,8 @@
     </div>
     <!-- <script src="js/main.js"></script> -->
     <script>
-		// Mendapatkan referensi ke elemen form
+
+// Mendapatkan referensi ke elemen form
 const form = document.querySelector('form');
 
 // Mendapatkan referensi ke elemen tabel
@@ -227,17 +206,17 @@ function tampilkanData() {
     const namaCell = row.insertCell();
     namaCell.textContent = data[i].nama;
 
-    const lokasiCell = row.insertCell();
-    lokasiCell.textContent = data[i].phone;
+    const phoneCell = row.insertCell();
+    phoneCell.textContent = data[i].phone;
 
-    const penyelenggaraCell = row.insertCell();
-    penyelenggaraCell.textContent = data[i].email;
+    const emailCell = row.insertCell();
+    emailCell.textContent = data[i].email;
 
-    const deskripsiCell = row.insertCell();
-    deskripsiCell.textContent = data[i].product;
+    const productCell = row.insertCell();
+    productCell.textContent = data[i].product;
 
-    const jenisCell = row.insertCell();
-    jenisCell.textContent = data[i].address;
+    const addressCell = row.insertCell();
+    addressCell.textContent = data[i].address;
 
     let statusCell = row.insertCell();
     statusCell.textContent = data[i].status;           
@@ -245,89 +224,8 @@ function tampilkanData() {
   }
 }
 
-// Fungsi untuk menambahkan data ke dalam tabel dan sessionStorage
-function tambahData() {
-  const nama = form.elements.nama.value;
-  const phone = form.elements.phone.value;
-  const email = form.elements.email.value;
-  const product = form.elements.product.value;
-  const address = form.elements.address.value;
-  let status = form.elements.status.value;
-
-
-  // Mengecek apakah data yang ingin ditambahkan sudah ada di dalam array `data`
-  const isDuplicate = data.some((item) => {
-    return item.nama === nama && item.phone === phone && item.email === email && item.product === product && item.address === address && item.status === status;
-  });
-
-  // Jika data sudah ada, tampilkan pesan kesalahan dan keluar dari fungsi
-  if (isDuplicate) {
-  
-    return;
-  }
-
-  const newData = {
-    nama: nama,
-    phone: phone,
-    email: email,
-    product: product,
-    address: address,
-    status: status
-
-  };
-
-  data.push(newData);
-  sessionStorage.setItem('data', JSON.stringify(data));
-  tampilkanData();
-}
-
-
-// Fungsi untuk mengedit data di dalam tabel dan sessionStorage
-// function editData(index) {
-//   const newData = {
-//     nama: prompt('Masukkan nama kegiatan:', data[index].nama),
-//     lokasi: prompt('Masukkan lokasi kegiatan:', data[index].lokasi),
-//     penyelenggara: prompt('Masukkan penyelenggara:', data[index].penyelenggara),
-//     deskripsi: prompt('Masukkan deskripsi kegiatan:', data[index].deskripsi),
-//     jenis: prompt('Masukkan jenis kegiatan (wajib/opsional):', data[index].jenis)
-//   };
-
-//   data[index] = newData;
-//   sessionStorage.setItem('data', JSON.stringify(data));
-//   tampilkanData();
-// }
-
-// Fungsi untuk menghapus data dari tabel dan sessionStorage
-function hapusData(index) {
-  data.splice(index, 1);
-  sessionStorage.setItem('data', JSON.stringify(data));
-  tampilkanData();
-}
-
 // Menampilkan data pertama kali
 tampilkanData();
-
-// Event listener untuk form submit
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const nama = form.elements.nama.value;
-  const phone = form.elements.phone.value;
-  const email = form.elements.email.value;
-const product = form.elements.product.value;
-const address = form.elements.address.value;
-let status = form.elements.status.value;
-
-// Memanggil fungsi tambahData dengan parameter yang sesuai
-tambahData(nama, phone, email, product, address, status);
-
-// Mereset nilai input pada form
-form.reset();
-});
-
-
-
-
 
 		</script>
         <script src="js/main.js"></script>
